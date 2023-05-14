@@ -1,0 +1,203 @@
+{
+	"info": {
+		"_postman_id": "47d2b9f9-fa7d-4b93-a9d6-efb07e6fafa5",
+		"name": "Open Weather",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23121472"
+	},
+	"item": [
+		{
+			"name": "Test1",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"request is sucessful\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"response must be valid and have a body\", function () {",
+							"     pm.response.to.be.ok;",
+							"     pm.response.to.be.withBody;",
+							"     pm.response.to.be.json;",
+							"});",
+							"",
+							"pm.test(\"weather is clear\", function () {",
+							"   pm.expect(pm.response.json().weather).is.a('array'); ",
+							"   pm.expect(pm.response.json().weather[0].id).is.a('number'); ",
+							"   pm.expect(pm.response.json().weather[0].description).is.a('string'); ",
+							"   pm.expect(pm.response.json().weather[0].description).to.eql('clear sky'); ",
+							"});",
+							"",
+							"pm.test(\"temperature\", function () {",
+							"pm.expect(pm.response.json().sys).is.a('object');",
+							"pm.expect(pm.response.json().sys.country).is.a('string');",
+							"pm.expect(pm.response.json().sys.country).is.eql('LT');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "in",
+							"value": "query",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "appid",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "fd7f3165996abece42d629482b4effc3",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.openweathermap.org/data/2.5/weather?lat=54.6872&lon=25.2797",
+					"protocol": "https",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"weather"
+					],
+					"query": [
+						{
+							"key": "lat",
+							"value": "54.6872"
+						},
+						{
+							"key": "lon",
+							"value": "25.2797"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"request is sucessful\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"response must be valid and have a body\", function () {",
+							"     pm.response.to.be.ok;",
+							"     pm.response.to.be.withBody;",
+							"     pm.response.to.be.json;",
+							"});",
+							"",
+							"pm.test(\"weather is cloudy\", function () {",
+							"   pm.expect(pm.response.json().current.weather).is.a('array'); ",
+							"   pm.expect(pm.response.json().current.weather[0]).is.a('object'); ",
+							"   pm.expect(pm.response.json().current.weather[0].main).is.a('string'); ",
+							"   pm.expect(pm.response.json().current.weather[0].main).to.eql('Clouds'); ",
+							"});",
+							"",
+							"pm.test(\"temperature\", function () {",
+							"pm.expect(pm.response.json().current.temp).to.be.within(0, 20);",
+							"pm.expect(pm.response.json().current.temp).not.to.be.within(0, 10);",
+							"pm.expect(pm.response.json().current.temp).is.a(\"number\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"my_key\",\"439d4b804bc8187953eb36d2a8c26a02\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://openweathermap.org/data/2.5/onecall?lat=51.5085&lon=-0.1257&units=metric&appid={{my_key}}",
+					"protocol": "https",
+					"host": [
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"onecall"
+					],
+					"query": [
+						{
+							"key": "lat",
+							"value": "51.5085"
+						},
+						{
+							"key": "lon",
+							"value": "-0.1257"
+						},
+						{
+							"key": "units",
+							"value": "metric"
+						},
+						{
+							"key": "appid",
+							"value": "{{my_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

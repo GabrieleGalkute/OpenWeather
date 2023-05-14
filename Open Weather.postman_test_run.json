@@ -1,0 +1,116 @@
+{
+	"id": "a7ce4b31-5743-40af-8978-ab62a1ebb3c0",
+	"name": "Open Weather",
+	"timestamp": "2023-05-13T19:25:10.773Z",
+	"collection_id": "23121472-47d2b9f9-fa7d-4b93-a9d6-efb07e6fafa5",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 8,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "843cee72-6d28-404c-9a35-29e8dfb2ca74",
+			"name": "Test1",
+			"url": "https://api.openweathermap.org/data/2.5/weather?lat=54.6872&lon=25.2797&appid=fd7f3165996abece42d629482b4effc3",
+			"time": 477,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"request is sucessful": true,
+				"response must be valid and have a body": true,
+				"weather is clear": true,
+				"temperature": true
+			},
+			"testPassFailCounts": {
+				"request is sucessful": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response must be valid and have a body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"weather is clear": {
+					"pass": 1,
+					"fail": 0
+				},
+				"temperature": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				477
+			],
+			"allTests": [
+				{
+					"request is sucessful": true,
+					"response must be valid and have a body": true,
+					"weather is clear": true,
+					"temperature": true
+				}
+			]
+		},
+		{
+			"id": "466f259e-6264-4035-9d02-e08f4dc0131f",
+			"name": "Test2",
+			"url": "https://openweathermap.org/data/2.5/onecall?lat=51.5085&lon=-0.1257&units=metric&appid=439d4b804bc8187953eb36d2a8c26a02",
+			"time": 622,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"request is sucessful": true,
+				"response must be valid and have a body": true,
+				"weather is cloudy": true,
+				"temperature": true
+			},
+			"testPassFailCounts": {
+				"request is sucessful": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response must be valid and have a body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"weather is cloudy": {
+					"pass": 1,
+					"fail": 0
+				},
+				"temperature": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				622
+			],
+			"allTests": [
+				{
+					"request is sucessful": true,
+					"response must be valid and have a body": true,
+					"weather is cloudy": true,
+					"temperature": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 1099,
+	"collection": {
+		"requests": [
+			{
+				"id": "843cee72-6d28-404c-9a35-29e8dfb2ca74",
+				"method": "GET"
+			},
+			{
+				"id": "466f259e-6264-4035-9d02-e08f4dc0131f",
+				"method": "GET"
+			}
+		]
+	}
+}
